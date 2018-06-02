@@ -8,7 +8,12 @@
 #include <QGraphicsItem>
 #include <QTimer>
 #include <QKeyEvent>
+#include <stdlib.h>
+#include <time.h>
+#include <iostream>
 #include "modojuego.h"
+
+using namespace std;
 
 namespace Ui {
 class Nivel;
@@ -24,7 +29,7 @@ public:
 public slots:
     void actualizar();
     void Saltar();
-    void mover(Modojuego*);
+    void pinchos();
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent *accion);
@@ -38,7 +43,9 @@ private:
     QGraphicsLineItem *l4;
     QTimer *timer;
     Modojuego *cubo,*pincho;
+    QList<Modojuego*> spike;
     int intentos=0,score=0,dist=8;
+    int rango,li=150,ls=500;
     bool saltar= false;
 
 };

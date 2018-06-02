@@ -25,8 +25,13 @@ Nivel::Nivel(QWidget *parent) :
     cubo= new Modojuego(40,260,40,40,":/imagenes/cubo3");
     scene->addItem(cubo);
 
-    pincho= new Modojuego(600,270,30,30,":/imagenes/pincho");
+    pincho= new Modojuego(670,272,25,25,":/imagenes/pincho");
     scene->addItem(pincho);
+    spike.append(pincho);
+
+    srand(time(NULL));
+
+    rango=li+ rand()% ((ls+1)-li);
 
     timer= new QTimer(this);
     connect(timer, SIGNAL(timeout()),this, SLOT(actualizar()));
@@ -41,7 +46,7 @@ Nivel::~Nivel()
 
 void Nivel::actualizar()
 {
-    mover(pincho);
+    pinchos();
     Saltar();
 }
 
@@ -60,9 +65,20 @@ void Nivel::Saltar()
     }
 }
 
-void Nivel::mover(Modojuego *objeto)
+void Nivel::pinchos()
 {
-    objeto->setPos(objeto->pos().x()-dist,objeto->pos().y());
+    if(spike.last()->pos().x() < -rango){
+        spike.append(new Modojuego(670,272,25,25,":/imagenes/pincho"));
+        scene->addItem(spike.last());
+        rango=li+ rand()% ((ls+1)-li);
+    }
+    for(int i=0; i < spike.size(); i++){
+        spike.at(i)->setX(spike.at(i)->pos().x()-dist);
+        if(spike.at(i)->pos().x() < -700){
+            delete spike.at(i);
+            spike.removeAt(i);
+        }
+    }
 }
 
 void Nivel::on_pushButton_clicked()

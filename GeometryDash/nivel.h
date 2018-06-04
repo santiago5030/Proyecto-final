@@ -30,6 +30,8 @@ public slots:
     void actualizar();
     void Saltar();
     void pinchos();
+    void colision();
+    void Score();
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent *accion);
@@ -44,9 +46,9 @@ private:
     QTimer *timer;
     Modojuego *cubo,*pincho;
     QList<Modojuego*> spike;
-    int intentos=0,score=0,dist=8;
-    int rango,li=150,ls=500;
-    bool saltar= false;
+    int intentos=1,score=0,dist=8,cont=0;
+    int rango,li,ls,control=30,highscore=0;
+    bool saltar= false,ban;
 
 };
 

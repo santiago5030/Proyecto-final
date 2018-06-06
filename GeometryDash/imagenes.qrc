@@ -1,9 +1,21 @@
 <RCC>
     <qresource prefix="/">
-        <file>imagenes/fondo 1.png</file>
         <file>imagenes/menuprincipal.jpg</file>
         <file>imagenes/menuprincipal2.jpg</file>
-        <file>imagenes/cubo3.png</file>
         <file>imagenes/pincho.png</file>
+        <file>imagenes/obs.png</file>
+        <file>imagenes/nave1.png</file>
+        <file>imagenes/cubo.png</file>
+        <file>imagenes/fondo2.jpg</file>
+        <file>imagenes/cubo2.png</file>
+        <file>imagenes/cubo3.png</file>
+        <file>imagenes/fondo1.png</file>
+        <file>imagenes/fondo3.png</file>
+        <file>imagenes/nave2.png</file>
+        <file>imagenes/nave3.png</file>
+        <file>imagenes/pincho2.png</file>
+        <file>imagenes/obs2.png</file>
+        <file>imagenes/pincho3.png</file>
+        <file>imagenes/obs3.png</file>
     </qresource>
 </RCC>

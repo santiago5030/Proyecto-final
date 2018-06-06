@@ -28,6 +28,7 @@ private:
     Ui::selectlevels *ui;
     Nivel *level;
     QGraphicsScene *scene;
+    int n;
 };
 
 #endif // SELECTLEVELS_H

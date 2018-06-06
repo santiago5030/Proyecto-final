@@ -13,9 +13,6 @@ public:
     Modojuego(int _x,int _y,int _ancho,int _largo, QString _image);
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    int gety();
-    void saltar();
-    void collision();
 };
 
 #endif // MODOJUEGO_H

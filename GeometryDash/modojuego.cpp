@@ -16,18 +16,3 @@ void Modojuego::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     pixmap.load(image);
     painter-> drawPixmap(boundingRect(), pixmap,pixmap.rect());
 }
-
-int Modojuego::gety()
-{
-    return y;
-}
-
-void Modojuego::saltar()
-{
-
-}
-
-void Modojuego::collision()
-{
-
-}

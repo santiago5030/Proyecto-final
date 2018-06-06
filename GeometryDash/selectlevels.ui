@@ -77,7 +77,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Nivel 2</string>
+    <string>Nivel 3</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_4">

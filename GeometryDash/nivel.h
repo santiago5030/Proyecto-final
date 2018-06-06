@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QGraphicsItem>
+#include <QMediaPlayer>
 #include <QTimer>
 #include <QKeyEvent>
 #include <stdlib.h>
@@ -32,6 +33,8 @@ public slots:
     void pinchos();
     void colision();
     void Score();
+    void Nave();
+    void colision2();
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent *accion);
@@ -44,11 +47,16 @@ private:
     QGraphicsLineItem *l3;
     QGraphicsLineItem *l4;
     QTimer *timer;
-    Modojuego *cubo,*pincho;
+    QMediaPlayer *musica;
+    Modojuego *cubo,*pincho,*nave,*elemento;
     QList<Modojuego*> spike;
-    int intentos=1,score=0,dist=8,cont=0;
-    int rango,li,ls,control=30,highscore=0;
-    bool saltar= false,ban;
+    QList<Modojuego*> rocket;
+    QList<int> altura;
+    int limite_i,limite_i2,vel,opcion;
+    QString fondo, imagecubo,imagenave,imagepincho,imagerocket,music;
+    int intentos=0,score=0,dist,cont=0;
+    int rango,li,ls,control,highscore=0,li2,control2,control3,cont2=0,height;
+    bool saltar= false;
 
 };
 

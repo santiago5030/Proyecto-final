@@ -25,7 +25,7 @@ class Nivel : public QWidget
     Q_OBJECT
 
 public:
-    explicit Nivel(QWidget *parent = 0);
+    explicit Nivel(int, QWidget *parent = 0);
     ~Nivel();
 public slots:
     void actualizar();
@@ -35,6 +35,7 @@ public slots:
     void Score();
     void Nave();
     void colision2();
+    void Musica();
 private slots:
     void on_pushButton_clicked();
     void keyPressEvent(QKeyEvent *accion);

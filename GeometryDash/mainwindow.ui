@@ -23,6 +23,12 @@
       <height>521</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Tahoma</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
@@ -43,16 +49,25 @@
      <string>Seleccionar Nivel</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>663</width>
-     <height>21</height>
-    </rect>
-   </property>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>220</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Tahoma</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Stats</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -63,6 +78,40 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>663</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionIniciar_Sesion_2"/>
+    <addaction name="actionCargar"/>
+    <addaction name="actionRegistrarse"/>
+   </widget>
+   <addaction name="menuMenu"/>
+  </widget>
+  <action name="actionIniciar_Sesion_2">
+   <property name="text">
+    <string>Iniciar Sesion</string>
+   </property>
+  </action>
+  <action name="actionCargar">
+   <property name="text">
+    <string>Cargar</string>
+   </property>
+  </action>
+  <action name="actionRegistrarse">
+   <property name="text">
+    <string>Registrarse</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

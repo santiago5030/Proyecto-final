@@ -17,5 +17,8 @@
         <file>imagenes/obs2.png</file>
         <file>imagenes/pincho3.png</file>
         <file>imagenes/obs3.png</file>
+        <file>songs/AirborneRobots.mp3</file>
+        <file>songs/The Seven Seas.mp3</file>
+        <file>songs/VikingArena.mp3</file>
     </qresource>
 </RCC>

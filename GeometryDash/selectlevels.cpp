@@ -7,7 +7,6 @@ selectlevels::selectlevels(QWidget *parent) :
     ui(new Ui::selectlevels)
 {
     ui->setupUi(this);
-    level= new Nivel();
     scene= new QGraphicsScene(0,0,500,300);
     ui->graphicsView->setScene(scene);
 
@@ -28,6 +27,21 @@ void selectlevels::on_pushButton_4_clicked()
 
 void selectlevels::on_pushButton_clicked()
 {
+    level= new Nivel(1);
+    level->show();
+    close();
+}
+
+void selectlevels::on_pushButton_2_clicked()
+{
+    level= new Nivel(2);
+    level->show();
+    close();
+}
+
+void selectlevels::on_pushButton_3_clicked()
+{
+    level= new Nivel(3);
     level->show();
     close();
 }

@@ -28,18 +28,24 @@ SOURCES += \
         mainwindow.cpp \
     nivel.cpp \
     modojuego.cpp \
-    selectlevels.cpp
+    selectlevels.cpp \
+    registrarse.cpp \
+    inicio.cpp
 
 HEADERS += \
         mainwindow.h \
     nivel.h \
     modojuego.h \
-    selectlevels.h
+    selectlevels.h \
+    registrarse.h \
+    inicio.h
 
 FORMS += \
         mainwindow.ui \
     nivel.ui \
-    selectlevels.ui
+    selectlevels.ui \
+    registrarse.ui \
+    inicio.ui
 
 RESOURCES += \
     imagenes.qrc

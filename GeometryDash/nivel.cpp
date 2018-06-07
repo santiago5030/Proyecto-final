@@ -3,7 +3,7 @@
 #include "mainwindow.h"
 #include <QDebug>
 
-Nivel::Nivel(QWidget *parent) :
+Nivel::Nivel(int _opcion, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Nivel)
 {
@@ -20,7 +20,7 @@ Nivel::Nivel(QWidget *parent) :
     scene->addItem(l3);
     scene->addItem(l4);
 
-    opcion=3;
+    opcion=_opcion;
     switch(opcion){
     case 1:
         fondo=":/imagenes/fondo1";
@@ -28,13 +28,13 @@ Nivel::Nivel(QWidget *parent) :
         imagepincho=":/imagenes/pincho";
         imagenave=":/imagenes/nave1";
         imagerocket=":/imagenes/obs";
-        music="/C:/Users/santiago M/Downloads/Cpp/GeometryDash/songs/The Seven Seas.mp3";
+        music="qrc:/songs/The Seven Seas.mp3";
         limite_i=180;
-        limite_i2=150;
+        limite_i2=180;
         control=40;
         control2=30;
         control3=20;
-        vel=8;
+        vel=10;
         break;
     case 2:
         fondo=":/imagenes/fondo2";
@@ -42,9 +42,9 @@ Nivel::Nivel(QWidget *parent) :
         imagepincho=":/imagenes/pincho2";
         imagenave=":/imagenes/nave2";
         imagerocket=":/imagenes/obs2";
-        music="/C:/Users/santiago M/Downloads/Cpp/GeometryDash/songs/VikingArena.mp3";
+        music="qrc:/songs/VikingArena.mp3";
         limite_i=200;
-        limite_i2=180;
+        limite_i2=220;
         control=30;
         control2=20;
         control3=20;
@@ -56,11 +56,11 @@ Nivel::Nivel(QWidget *parent) :
         imagepincho=":/imagenes/pincho3";
         imagenave=":/imagenes/nave3";
         imagerocket=":/imagenes/obs3";
-        music="/C:/Users/santiago M/Downloads/Cpp/GeometryDash/songs/Airborne Robots.mp3";
+        music="qrc:/songs/AirborneRobots.mp3";
         limite_i=220;
         limite_i2=240;
-        control=40;
-        control2=30;
+        control=30;
+        control2=20;
         control3=20;
         vel=14;
         break;
@@ -90,7 +90,7 @@ Nivel::Nivel(QWidget *parent) :
     ui->lcdNumber_2->display(intentos);
 
     musica= new QMediaPlayer(this);
-    musica->setMedia(QUrl::fromLocalFile(music));
+    musica->setMedia(QUrl(music));
 
     timer= new QTimer(this);
     connect(timer, SIGNAL(timeout()),this, SLOT(actualizar()));
@@ -126,6 +126,7 @@ void Nivel::actualizar()
         colision2();
     }
     Score();
+    Musica();
     if(cont>=control){
         dist+=2;
         cont=0;
@@ -236,10 +237,18 @@ void Nivel::colision2()
     }
 }
 
+void Nivel::Musica()
+{
+    if(musica->position()== musica->duration()){
+        musica->play();
+    }
+}
+
 void Nivel::on_pushButton_clicked()
 {
     MainWindow *menu= new MainWindow;
     timer->stop();
+    musica->stop();
     intentos=0;
     if(score > highscore){
         highscore= score;
@@ -257,12 +266,12 @@ void Nivel::keyPressEvent(QKeyEvent *accion)
     }
     if(accion ->key()== Qt::Key_M && spike.isEmpty() && timer->isActive()){
         if(nave->pos().y() > -270){
-            nave->setY(nave->pos().y()-15);
+            nave->setY(nave->pos().y()-18);
         }
     }
     if(accion ->key()== Qt::Key_N && spike.isEmpty() && timer->isActive()){
         if(nave->pos().y() < -20){
-            nave->setY(nave->pos().y()+15);
+            nave->setY(nave->pos().y()+18);
         }
     }
     if(accion->key()== Qt::Key_R){

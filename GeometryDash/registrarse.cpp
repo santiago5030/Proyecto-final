@@ -17,18 +17,18 @@ Registrarse::~Registrarse()
 
 void Registrarse::leer()
 {
-    QFile archivo(nombre_archivo);
+    QFile archivo(nombre_archivo);            //Se abre el archivo en modo lectura
     if(!archivo.open(QIODevice::ReadOnly | QIODevice::Text)){
         return;
     }
     QTextStream in(&archivo);
     QString linea;
-    while(!in.atEnd()){
+    while(!in.atEnd()){             //Ciclo que itera sobre las lineas del archivo
         linea= in.readLine();
-        for(int i=0; linea[i] != ';'; i++){
+        for(int i=0; linea[i] != ';'; i++){  //Ciclo que extrae el usuario de cada linea
             user+=linea[i];
         }
-        if(user==usuario){
+        if(user==usuario){     //Verificamos que el usuario no se encuentre registrado
             QMessageBox::information(this,"Registro","El usuario ya se encuentra registrado");
             break;
         }
@@ -39,29 +39,29 @@ void Registrarse::leer()
 
 void Registrarse::agregar()
 {
-    QFile archivo(nombre_archivo);
+    QFile archivo(nombre_archivo); //Abrimos el archivo en modo agregar
     if(!archivo.open(QIODevice::Append | QIODevice::Text)){
         return;
     }
     QTextStream out(&archivo);
-    out <<usuario<<";"<<con<<"\n";
+    out <<usuario<<";"<<con<<"\n";  //Escribimos el usuario segudo de un ; y la contraseña
     archivo.close();
 }
 
 void Registrarse::agregar2()
 {
-    QFile archivo(nombre_archivo2);
+    QFile archivo(nombre_archivo2);  //Abrimos el archivo en modo agregar
     if(!archivo.open(QIODevice::Append | QIODevice::Text)){
         return;
     }
     QTextStream out(&archivo);
-    out <<usuario<<";"<<0<<";"<<0<<";"<<0<<";"<<"\n";
+    out <<usuario<<";"<<0<<";"<<0<<";"<<0<<";"<<"\n";  //Escribimos el usuario con los puntajes iniciales dividido por ;
     archivo.close();
 }
 
 void Registrarse::on_pushButton_clicked()
 {
-    usuario= ui->lineEdit->text();
+    usuario= ui->lineEdit->text();  //Guardamos los datos ingresados
     con=ui->lineEdit_2->text();
     if(usuario.length() > 15 || con.length() > 15){
         QMessageBox::information(this,"Registrarse","El usuario y contraseña deben contener menos de 15 caracteres");
@@ -72,7 +72,7 @@ void Registrarse::on_pushButton_clicked()
     if(usuario.length() <= 15 && con.length() <=15 && !usuario.isEmpty() && !con.isEmpty()){
         leer();
         if(user!=usuario){
-            agregar();
+            agregar();     //Se escribe en los archivos si no se encuentra registrado
             agregar2();
             QMessageBox::information(this,"Registro","El registro se ha hecho correctamente");
         }

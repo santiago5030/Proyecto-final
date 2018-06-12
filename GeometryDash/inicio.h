@@ -19,15 +19,15 @@ public:
     ~Inicio();
 
 public slots:
-    void leer();
-    bool getinicio();
-    QString getusuario();
+    void leer();          //Metodo para leer el archivo donde se encuentre registrado el ususario
+    bool getinicio();     //Metodo get para determinar si se ha logrado iniciar sesion
+    QString getusuario(); //Metodo para obtener el usuario que ha iniciado sesion
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_clicked();   //Boton de login (iniciar sesion)
 
 private:
     Ui::Inicio *ui;
-    QString usuario,con,user,nombre_archivo,password;
+    QString usuario,con,user,nombre_archivo,password; // variables de control
     bool ban;
 };
 

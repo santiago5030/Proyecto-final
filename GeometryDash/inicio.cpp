@@ -17,7 +17,7 @@ Inicio::~Inicio()
 
 void Inicio::leer()
 {
-    QFile archivo(nombre_archivo);
+    QFile archivo(nombre_archivo);                             //Abrimos el archivo de registro el modo lectura
     if(!archivo.open(QIODevice::ReadOnly | QIODevice::Text)){
         return;
     }
@@ -25,14 +25,14 @@ void Inicio::leer()
     int n=0;
     while(!in.atEnd()){
         QString linea=in.readLine();
-        while(linea[n] != ';'){
+        while(linea[n] != ';'){        //Ciclo que extrae el ususario de cada linea
             user+=linea[n];
             n++;
         }
         if(user==usuario){
-            for(int i=n+1; i < linea.length();i++){
-                password+=linea[i];
-            }
+            for(int i=n+1; i < linea.length();i++){ //Verificamos que el usuario ingresado coincida con alguno
+                password+=linea[i];                 //registrado
+            }                         //Extraemos la contraseña de la linea y verificamos que coincida con la ingresada
             if(con!=password){
                 QMessageBox::information(this,"Iniciar Sesion","La contraseña es incorrecta");
             }
@@ -46,17 +46,17 @@ void Inicio::leer()
 
 bool Inicio::getinicio()
 {
-    return ban;
+    return ban;          //Retorno de bandera que indica si se ha iniciado sesion
 }
 
 QString Inicio::getusuario()
 {
-    return usuario;
+    return usuario;          //Retorno del usuario que ha iniciado sesion
 }
 
 void Inicio::on_pushButton_clicked()
 {
-    usuario=ui->lineEdit->text();
+    usuario=ui->lineEdit->text();     //Guardamos los datos ingresados
     con=ui->lineEdit_2->text();
     if(usuario.length() > 15 || con.length() > 15){
         QMessageBox::information(this,"Iniciar Sesion","El usuario y la contraseña contienen menos de 15 caracteres");
@@ -64,20 +64,21 @@ void Inicio::on_pushButton_clicked()
     if(usuario.isEmpty() || con.isEmpty()){
         QMessageBox::information(this,"Iniciar Sesion","Debes completar el registro");
     }
-    if(usuario.length() <= 15 && con.length() <=15 && !usuario.isEmpty() && !con.isEmpty()){
+    if(usuario.length() <= 15 && con.length() <=15 && !usuario.isEmpty() && !con.isEmpty()){ //control de usuario
         leer();
         if(user!= usuario){
             QMessageBox::information(this,"Iniciar Sesion","El usuario no se encuentra registrado");
             user.clear();
-        }
+        }                    //Verificamos que el usuario se encuentre registrado y la contraseña coincida
         else{
             if(con==password){
                 QMessageBox::information(this,"Iniciar Sesion","Se ha iniciado sesion correctamente");
                 ban=true;
-                close();
+                close();          //la bandera indica que se ha iniciado sesion
             }
             else{
                 password.clear();
+                user.clear();
             }
         }
     }
